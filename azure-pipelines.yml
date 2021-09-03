@@ -22,15 +22,16 @@ steps:
     version: '5.0.x'
     packageType: runtime
 - task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
   inputs:
     command: 'restore'
+    projects: '**/*.csproj'
     feedsToUse: 'select'
-    vstsFeed: 'my-vsts-feed' # A series of numbers and letters
-  displayName: 'donet restore'
-
+    vstsFeed: 'b1c2c54d-a389-45af-9c6d-6a490da87103'
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
+    projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
   displayName: 'dotnet build $(buildConfiguration)'
 - task: DotNetCoreCLI@2
